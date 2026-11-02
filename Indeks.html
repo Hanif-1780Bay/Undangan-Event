@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan VIP - Welcome to the Cosmos</title>
+    <style>
+        /* Mengambil font bertema Sci-Fi dari Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Space+Grotesk:wght@400;700&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050510;
+            background-image: radial-gradient(circle at center, #1a1a3a 0%, #050510 100%);
+            color: #ffffff;
+            font-family: 'Space Grotesk', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Container Kartu Undangan */
+        .card {
+            background: rgba(10, 10, 30, 0.8);
+            border: 2px solid #00f3ff;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4), inset 0 0 20px rgba(0, 243, 255, 0.2);
+            padding: 40px 30px;
+            max-width: 380px;
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Efek bingkai Cybernetic di sudut */
+        .card::before, .card::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            border: 2px solid #00f3ff;
+            border-radius: 5px;
+        }
+        .card::before {
+            top: -10px; left: -10px;
+            border-right: none; border-bottom: none;
+        }
+        .card::after {
+            bottom: -10px; right: -10px;
+            border-left: none; border-top: none;
+        }
+
+        /* Tipografi Judul */
+        h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px #00f3ff, 0 0 20px #00f3ff;
+        }
+
+        h2 {
+            font-size: 14px;
+            color: #b0c4de;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 30px;
+        }
+
+        /* Elemen Portal Melingkar dengan Animasi */
+        .portal-image {
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #8a2be2 0%, #000000 80%);
+            box-shadow: 0 0 30px #8a2be2, inset 0 0 20px #ff00ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed #00f3ff;
+            animation: spin 15s linear infinite;
+        }
+
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Kotak Nama Tamu ala HUD */
+        .guest-box {
+            border: 1px solid rgba(0, 243, 255, 0.5);
+            background: rgba(0, 243, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .guest-box p {
+            margin: 0 0 5px 0;
+            font-size: 12px;
+            color: #00f3ff;
+            letter-spacing: 1px;
+        }
+
+        .guest-name {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #ffd700;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        /* Detail Acara */
+        .details {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .details span {
+            color: #00f3ff;
+            font-weight: bold;
+        }
+
+        /* QR Code Placeholder */
+        .qr-code {
+            width: 80px;
+            height: 80px;
+            background: #fff;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 5px;
+            border: 2px solid #00f3ff;
+            border-radius: 5px;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <h1>Undangan VIP</h1>
+        <h2>Eksplorasi Luar Angkasa<br>Welcome to the Cosmos</h2>
+
+        <div class="portal-image">
+            <!-- Icon Roket sebagai ganti gambar astronot 3D -->
+            <span style="font-size: 40px; animation: none;">🚀</span>
+        </div>
+
+        <div class="guest-box">
+            <p>KEPADA YTH.</p>
+            <!-- Nama tamu akan otomatis berubah melalui JavaScript -->
+            <div class="guest-name" id="namaTamu">Tamu Kehormatan</div>
+        </div>
+
+        <div class="details">
+            SABTU, 12 DESEMBER 2026<br>
+            JAM 18:00 WIB - SELESAI<br>
+            <span>GALAXY HALL, JAKARTA</span><br><br>
+            DRESS CODE: FUTURISTIC / SPACE CASUAL
+        </div>
+
+        <div class="qr-code">
+            <!-- QR Code otomatis dari API gratis -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=80x80&data=AksesMasukVIP-2026" alt="QR Code">
+        </div>
+        <p style="font-size: 10px; color: #00f3ff; margin-top: 10px; letter-spacing: 1px;">AKSES MASUK</p>
+    </div>
+
+    <script>
+        // Fitur dinamis untuk mengubah nama tamu menggunakan parameter URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const nama = urlParams.get('kepada');
+        
+        if (nama) {
+            // Mengganti teks "-" dengan spasi jika ada
+            document.getElementById('namaTamu').innerText = nama.replace(/-/g, ' ');
+        }
+    </script>
+</body>
+</html>
